@@ -122,6 +122,8 @@ var allFunctions = function () {
     request.onerror = function () {
       document.querySelector("main .messages").append("connection error");
     };
+    var debugArea2 = document.querySelector("main .forDebug");
+    if (debugArea2) debugArea2.innerHTML = ' ';
 
     request.send();
   };
@@ -154,13 +156,25 @@ var allFunctions = function () {
     }
   };
 
+  // bug found !!!
+  // var getAndDisplayMap = function (wms_request) {
+  //   var img = document.createElement("img");
+  //   img.style.display = "none";
+  //   img.src = wms_request;
+  //   document.querySelector("main .mapDiv").append(img);
+  //   img.style.display = "block";
+  // };
+
   var getAndDisplayMap = function (wms_request) {
-    var img = document.createElement("img");
-    img.style.display = "none";
-    img.src = wms_request;
-    document.querySelector("main .mapDiv").append(img);
-    img.style.display = "block";
-  };
+      // clearing old map
+      const mapDiv = document.querySelector("main .mapDiv");
+      mapDiv.innerHTML = ' ';
+
+      // displaying new map
+      const img = document.createElement("img");
+      img.src = wms_request;
+      mapDiv.append(img);
+  }
 
   var constructWMSrequest = function (
     baseUrl,
@@ -220,25 +234,26 @@ var allFunctions = function () {
     getAndDisplayMap(wms_request);
   };
 
-  var searchFromInput = function () {
-    var postalcodeInput;
-    var countryInput;
-
-    if (document.querySelector("section#geonames input").value !== "") {
-      postalcodeInput = document.querySelector("#postal").value;
-      countryInput = document.querySelector("#countrySelect").value;
-      var rows = document.querySelectorAll("#resultsTable tr");
-      for (var i = 1; i < rows.length; i++) {
-        rows[i].remove();
-      }
-      document.querySelector("main .messages").textContent = "";
-      document.querySelector("main .forDebug").textContent = "";
-
-      getPlacenames_plain_javascript(postalcodeInput, countryInput);
-    } else {
-      alert("Enter (first part of) postal code");
-    }
-  };
+  // bug found !!!
+  // var searchFromInput = function () {
+  //   var postalcodeInput;
+  //   var countryInput;
+  //
+  //   if (document.querySelector("section#geonames input").value !== "") {
+  //     postalcodeInput = document.querySelector("#postal").value;
+  //     countryInput = document.querySelector("#countrySelect").value;
+  //     var rows = document.querySelectorAll("#resultsTable tr");
+  //     for (var i = 1; i < rows.length; i++) {
+  //       rows[i].remove();
+  //     }
+  //     document.querySelector("main .messages").textContent = "";
+  //     document.querySelector("main .forDebug").textContent = "";
+  //
+  //     getPlacenames_plain_javascript(postalcodeInput, countryInput);
+  //   } else {
+  //     alert("Enter (first part of) postal code");
+  //   }
+  // };
 
   document.body.addEventListener("click", function (event) {
     if (event.target.matches("input.theButton2")) {

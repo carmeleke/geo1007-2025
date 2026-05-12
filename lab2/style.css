@@ -1,0 +1,37 @@
+body {
+    background-color: #701705;
+    color: #feebe7;
+}
+
+h1 {
+    font-size: 64px;
+    color: #feebe7;
+}
+
+p {
+    border: 5px solid #faa18f;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    color: #701705;
+    text-align: center;
+    background-color: #feebe7;
+}
+
+.list-one {
+    background-color: #feebe7;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    font-family: Comic, sans-serif;
+    color: #701705;
+}
+
+.list-two {
+    background: linear-gradient(to right, #feebe7, #701705);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    font-family: Georgia, serif;
+    color: #701705;
+}
